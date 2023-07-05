@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
   <title>Búsqueda de Donaciones y Pedidos</title>
@@ -8,30 +8,11 @@
 </head>
 
 <body>
-  <h1>Búsqueda de Donaciones y Pedidos</h1>
-  <div>
-    <label for="searchType">Buscar por:</label>
-    <select id="searchType">
-      <option value="donacion">Donación</option>
-      <option value="pedido">Pedido</option>
-    </select>
+  <div role="main">
+    <h1>Búsqueda de Donaciones y Pedidos</h1>
+    <div th:replace="fragments/search :: search"></div>
+    <div th:replace="fragments/entries_table :: table"></div>
   </div>
-  <div>
-    <input type="text" id="searchBox" placeholder="Buscar por nombre de contacto en donaciones" />
-  </div>
-    <table class="table">
-      <thead>
-          <tr>
-              <th>Nombre</th>
-              <th>Tipo</th>
-              <th>Cantidad</th>
-              <th>Total comentarios</th>
-          </tr>
-      </thead>
-      <div id="searchResults" hidden>
-      <tbody id="tableResults">
-      </tbody>
-      </div>
-  </table>
 </body>
+
 </html>

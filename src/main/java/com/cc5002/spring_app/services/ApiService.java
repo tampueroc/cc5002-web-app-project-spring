@@ -81,4 +81,26 @@ public class ApiService {
         return matchComentarios;
     }
 
+    public List<Comentario> getComentarios(Integer id_donacion, Integer id_pedido) {
+        if (id_donacion != null) {
+            List<Comentario> comentarios = comentarioRepository.findAllByOrderByFechaDesc();
+            List<Comentario> matchComentarios = new ArrayList<Comentario>();
+            for (Comentario comentario : comentarios) {
+                if (comentario.getId_donacion() == id_donacion) {
+                    matchComentarios.add(comentario);
+                }
+            }
+            return matchComentarios;
+        } else {
+            List<Comentario> comentarios = comentarioRepository.findAllByOrderByFechaDesc();
+            List<Comentario> matchComentarios = new ArrayList<Comentario>();
+            for (Comentario comentario : comentarios) {
+                if (comentario.getId_pedido() == id_pedido) {
+                    matchComentarios.add(comentario);
+                }
+            }
+            return matchComentarios;
+        }
+    }
+
 }

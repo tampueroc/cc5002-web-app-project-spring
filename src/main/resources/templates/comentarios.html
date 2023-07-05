@@ -1,42 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Comentarios</title>
+    <script th:inline="javascript">
+        var id_pedido = /*[[${id_pedido}]]*/ null;
+        var id_donacion = /*[[${id_donacion}]]*/ null;
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/comments.js}"></script>
 </head>
-
 <body>
     <h1 th:text="${message}"></h1>
-    <form method="post">
-        <label>Nombre:</label>
-        <input type="text" name="nombre" th:value="${nombre}" />
-        <br />
-        <label>Email:</label>
-        <input type="text" name="email" th:value="${email}" />
-        <br />
-        <label>Comentario:</label>
-        <input type="text" name="comentario" th:value="${comentario}" />
-        <br />
-        <input type="hidden" name="id_pedido" th:value="${id_pedido}" />
-        <br />
-        <input type="hidden" name="id_donacion" th:value="${id_donacion}"/>
-        <input type="submit" value="grabar comentario"> 
-    </form>
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Comentario</th>
-            <th>Fecha</th>
-        </tr>
-        <tr th:each="comentario : ${comentarios}">
-            <td th:text="${comentario.nombre}"></td>
-            <td th:text="${comentario.email}"></td>
-            <td th:text="${comentario.comentario}"></td>
-            <td th:text="${comentario.fecha}"></td>
-        </tr>
-    </table>
+    <th:block th:replace="fragments/form :: form"></th:block>
+    <th:block th:replace="fragments/comentarios-table :: table"></th:block>
     <script>
     </script>
 </body>

@@ -31,7 +31,7 @@ public class AppController {
             model.addAttribute("message", "Comentarios Pedido " + id_pedido);
             model.addAttribute("id_pedido", id_pedido);
         }
-        model.addAttribute("comentarios", appService.getComentarios(id_donacion, id_pedido));
+        // model.addAttribute("comentarios", appService.getComentarios(id_donacion, id_pedido));
         return "comentarios"; //view
     }
 

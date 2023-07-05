@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,12 +31,8 @@ public class ApiController {
     }
 
     @GetMapping(path = "/api/comentarios")
-    public List<Comentario> getDonacionComentarios(@RequestParam int id_donacion, @RequestParam int id_pedido) {
-        if (id_donacion != 0) {
-            return apiService.getDonacionComentarios(id_donacion);
-        } else {
-            return apiService.getPedidoComentarios(id_pedido);
-        }
+    public List<Comentario> getDonacionComentarios(@RequestParam(required = false)  Integer id_donacion, @RequestParam(required = false)  Integer id_pedido) {
+        return apiService.getComentarios(id_donacion, id_pedido);
     }
     
 }
