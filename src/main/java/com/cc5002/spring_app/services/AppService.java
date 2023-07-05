@@ -19,7 +19,7 @@ public class AppService {
 
     public List<Comentario> getComentarios(Integer id_donacion, Integer id_pedido) {
         if (id_donacion != null) {
-            List<Comentario> comentarios = comentarioRepository.findAll();
+            List<Comentario> comentarios = comentarioRepository.findAllByOrderByFechaDesc();
             List<Comentario> matchComentarios = new ArrayList<Comentario>();
             for (Comentario comentario : comentarios) {
                 if (comentario.getId_donacion() == id_donacion) {
@@ -28,7 +28,7 @@ public class AppService {
             }
             return matchComentarios;
         } else {
-            List<Comentario> comentarios = comentarioRepository.findAll();
+            List<Comentario> comentarios = comentarioRepository.findAllByOrderByFechaDesc();
             List<Comentario> matchComentarios = new ArrayList<Comentario>();
             for (Comentario comentario : comentarios) {
                 if (comentario.getId_pedido() == id_pedido) {

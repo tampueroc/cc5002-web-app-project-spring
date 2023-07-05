@@ -3,7 +3,9 @@ let updateSearchResults = (results) => {
   let tableResults = document.getElementById("tableResults");
   let searchType = document.getElementById("searchType");
 
-  tableResults.innerHTML = "";
+  while (tableResults.firstChild) {
+    tableResults.removeChild(tableResults.firstChild);
+  }
   for (let result of results) {
     let resultElement = document.createElement("tr");
     let resultElementNombre = document.createElement("td");
@@ -81,6 +83,12 @@ let fetchAJAX = (url) => {
         // Realizar la búsqueda dinámica y mostrar los resultados
         // Aquí puedes utilizar AJAX para hacer la solicitud al servidor y obtener los resultados
         // Luego, puedes mostrar los resultados en una lista en el DOM
+      }
+      if (searchText.length < 3) {
+        let tableResults = document.getElementById("tableResults");
+        while (tableResults.firstChild) {
+          tableResults.removeChild(tableResults.firstChild);
+        }
       }
     });
   });
