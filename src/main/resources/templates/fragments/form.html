@@ -1,20 +1,20 @@
 <div th:fragment="form">
 <form method="post">
     <label>Nombre:
-        <input type="text" name="nombre" th:value="${nombre}" />
+        <input type="text" name="nombre" th:value="${nombre}">
     </label>
     <br />
     <label>Email:
-        <input type="text" name="email" th:value="${email}" />
+        <input type="text" name="email" th:value="${email}">
     </label>
     <br />
     <label>Comentario:
-        <input type="text" name="comentario" th:value="${comentario}" />
+        <input type="text" name="comentario" th:value="${comentario}">
     </label>
     <br />
-    <input type="hidden" name="id_pedido" th:value="${id_pedido}" />
+    <input type="hidden" name="id_pedido" th:value="${id_pedido}">
     <br />
-    <input type="hidden" name="id_donacion" th:value="${id_donacion}" />
+    <input type="hidden" name="id_donacion" th:value="${id_donacion}">
     <input type="submit" value="grabar comentario">
 </form>
 </div>

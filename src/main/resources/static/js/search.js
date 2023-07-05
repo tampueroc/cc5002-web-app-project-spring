@@ -7,7 +7,6 @@ function parseTipo(tipo) {
     return "otros";}
 }
 let updateSearchResults = (results) => {
-  let searchResults = document.getElementById("searchResults");
   let tableResults = document.getElementById("tableResults");
   let searchType = document.getElementById("searchType");
 
@@ -61,7 +60,7 @@ let updateSearchResults = (results) => {
       tableResults.appendChild(resultElement);
     }
   }
-  searchResults.hidden = false;
+  tableResults.hidden = false;
 };
 
 
