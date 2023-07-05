@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cc5002.spring_app.comentario.Comentario;
-import com.cc5002.spring_app.pedido.Pedido;
 import com.cc5002.spring_app.services.ApiService;
 
 
@@ -26,7 +25,7 @@ public class ApiController {
     }
 
     @GetMapping(path = "/api/pedidos")
-    public List<Pedido> getPedidos(@RequestParam String name) {
+    public  List<Map<String, Object>>  getPedidos(@RequestParam String name) {
         return apiService.getPedidos(name);
     }
 

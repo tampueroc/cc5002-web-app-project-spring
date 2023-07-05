@@ -35,8 +35,10 @@ public class ApiService {
                 int totalComentarios = 0;
                 List<Comentario> comentarios = comentarioRepository.findAll();
                 for (Comentario comentario : comentarios) {
-                    if (comentario.getId_donacion() == donacion.getId()) {
-                        totalComentarios++;
+                    if (comentario.getId_donacion() != null) {
+                        if (comentario.getId_donacion() == donacion.getId()) {
+                            totalComentarios++;
+                        }
                     }
                 }
                 Map<String, Object> donacionEntry = new HashMap<>();
@@ -48,37 +50,27 @@ public class ApiService {
         return matchDonaciones;
     }
 
-    public List<Pedido> getPedidos(String nameSubString) {
+    public List<Map<String, Object>> getPedidos(String nameSubString) {
         List<Pedido> pedidos = pedidoRepository.findAll();
-        List<Pedido> matchPedidos = new ArrayList<Pedido>();
+        List<Map<String, Object>> matchPedidos = new ArrayList<>();
         for (Pedido pedido : pedidos) {
             if (pedido.getNombre_solicitante().toLowerCase().contains(nameSubString)) {
-                matchPedidos.add(pedido);
+                int totalComentarios = 0;
+                List<Comentario> comentarios = comentarioRepository.findAll();
+                for (Comentario comentario : comentarios) {
+                    if (comentario.getId_pedido() != null) {
+                        if (comentario.getId_pedido() == pedido.getId()) {
+                            totalComentarios++;
+                        }
+                    }
+                }
+                Map<String, Object> pedidoEntry = new HashMap<>();
+                pedidoEntry.put("pedido", pedido);
+                pedidoEntry.put("total_comentarios", totalComentarios);
+                matchPedidos.add(pedidoEntry);
             }
         }
         return matchPedidos;
-    }
-
-    public List<Comentario> getDonacionComentarios(int id_donacion) {
-        List<Comentario> comentarios = comentarioRepository.findAll();
-        List<Comentario> matchComentarios = new ArrayList<Comentario>();
-        for (Comentario comentario : comentarios) {
-            if (comentario.getId_donacion() == id_donacion) {
-                matchComentarios.add(comentario);
-            }
-        }
-        return matchComentarios;
-    }
-
-    public List<Comentario> getPedidoComentarios(int id_pedido) {
-        List<Comentario> comentarios = comentarioRepository.findAll();
-        List<Comentario> matchComentarios = new ArrayList<Comentario>();
-        for (Comentario comentario : comentarios) {
-            if (comentario.getId_pedido() == id_pedido) {
-                matchComentarios.add(comentario);
-            }
-        }
-        return matchComentarios;
     }
 
     public List<Comentario> getComentarios(Integer id_donacion, Integer id_pedido) {
