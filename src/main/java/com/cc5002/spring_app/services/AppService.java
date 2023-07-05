@@ -11,7 +11,6 @@ import com.cc5002.spring_app.comentario.ComentarioRepository;
 
 @Service
 public class AppService {
-    private final String pathStatic = "./spring_app/src/main/resources/static";
     private final ComentarioRepository comentarioRepository;
 
     public AppService(ComentarioRepository comentarioRepository) {
@@ -41,13 +40,6 @@ public class AppService {
     }
 
     public void handlePostRequest(Integer id_pedido, Integer id_donacion, String comentario, String nombre, String email) {
-        // Print all parameters
-        System.out.println("id_pedido: " + id_pedido);
-        System.out.println("id_donacion: " + id_donacion);
-        System.out.println("comentario: " + comentario);
-        System.out.println("nombre: " + nombre);
-        System.out.println("email: " + email);
-        // Save comentario
         LocalDateTime comentarioTimestamp = LocalDateTime.now();
         Comentario comentario_object = new Comentario(nombre, email, comentarioTimestamp, comentario, id_donacion, id_pedido);
         comentarioRepository.save(comentario_object);

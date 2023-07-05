@@ -29,7 +29,6 @@ public class ApiService {
 
     public List<Map<String, Object>> getDonaciones(String nameSubString) {
         List<Donacion> donaciones = donacionRepository.findAll();
-        System.out.println("donaciones: " + donaciones);
         List<Map<String, Object>> matchDonaciones = new ArrayList<>();
         for (Donacion donacion : donaciones) {
             if (donacion.getNombre().toLowerCase().contains(nameSubString)) {
