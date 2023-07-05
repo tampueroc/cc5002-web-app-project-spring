@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Comentarios</title>
+</head>
+<body>
+    <h1 th:text="${message}"></h1>
+    <table>
+        <tr>
+            <th>Comentario</th>
+            <th>Fecha</th>
+        </tr>
+        <tr th:each="comentario : ${comentarios}">
+            <td th:text="${comentario.comentario}"></td>
+            <td th:text="${comentario.fecha}"></td>
+        </tr>  
+    </table>  
+</body>
+</html>

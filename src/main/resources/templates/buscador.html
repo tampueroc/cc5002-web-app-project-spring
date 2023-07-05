@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Búsqueda de Donaciones y Pedidos</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script th:src="@{/js/search.js}"></script>
+</head>
+
+<body>
+  <h1>Búsqueda de Donaciones y Pedidos</h1>
+  <div>
+    <label for="searchType">Buscar por:</label>
+    <select id="searchType">
+      <option value="donacion">Donación</option>
+      <option value="pedido">Pedido</option>
+    </select>
+  </div>
+  <div>
+    <input type="text" id="searchBox" placeholder="Buscar por nombre de contacto en donaciones" />
+  </div>
+    <table class="table">
+      <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>Cantidad</th>
+              <th>Total comentarios</th>
+          </tr>
+      </thead>
+      <div id="searchResults" hidden>
+      <tbody id="tableResults">
+      </tbody>
+      </div>
+  </table>
+  <div id="comentarios">
+    <!-- Aquí se mostrarán los comentarios asociados a la donación o pedido seleccionado -->
+  </div>
+</body>
+</html>
