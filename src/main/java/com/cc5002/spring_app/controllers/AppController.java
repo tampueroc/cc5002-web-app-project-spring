@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cc5002.spring_app.services.AppService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 @Controller
 public class AppController {
@@ -17,18 +19,31 @@ public class AppController {
     
     @GetMapping("/")
     public String main(Model model) {
-        model.addAttribute("message", "Hello World!");
         return "buscador"; //view
     }
 
     @GetMapping("/comentarios")
-    public String comentarios(Model model, @RequestParam int id_pedido, @RequestParam int id_donacion) {
-        if (id_donacion != 0) {
+    public String comentarios(Model model, @RequestParam(required = false) Integer id_pedido, @RequestParam(required = false) Integer id_donacion) {
+        if (id_donacion != null) {
             model.addAttribute("message", "Comentarios Donacion " + id_donacion);
+            model.addAttribute("id_donacion", id_donacion);
         } else {
             model.addAttribute("message", "Comentarios Pedido " + id_pedido);
+            model.addAttribute("id_pedido", id_pedido);
         }
-        model.addAttribute("comentarios", appService.getComentarios(id_pedido, id_donacion));
+        model.addAttribute("comentarios", appService.getComentarios(id_donacion, id_pedido));
         return "comentarios"; //view
     }
+
+    @PostMapping(value="/comentarios")
+    public String postComentario(@RequestParam(required = false) Integer id_pedido, @RequestParam(required = false) Integer id_donacion, @RequestParam String comentario, @RequestParam String nombre, @RequestParam String email) {
+        appService.handlePostRequest(id_pedido, id_donacion, comentario, nombre, email);  
+        if (id_donacion == null) {
+            return "redirect:/comentarios?id_pedido=" + Integer.toString(id_pedido);
+        }
+        else {
+            return "redirect:/comentarios?id_donacion=" + Integer.toString(id_donacion);
+        }      
+    }
+    
 }

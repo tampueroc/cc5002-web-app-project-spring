@@ -1,11 +1,10 @@
 package com.cc5002.spring_app.services;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cc5002.spring_app.comentario.Comentario;
 import com.cc5002.spring_app.comentario.ComentarioRepository;
@@ -19,8 +18,8 @@ public class AppService {
         this.comentarioRepository = comentarioRepository;
     }
 
-    public List<Comentario> getComentarios(int id_donacion, int id_pedido) {
-        if (id_donacion != 0) {
+    public List<Comentario> getComentarios(Integer id_donacion, Integer id_pedido) {
+        if (id_donacion != null) {
             List<Comentario> comentarios = comentarioRepository.findAll();
             List<Comentario> matchComentarios = new ArrayList<Comentario>();
             for (Comentario comentario : comentarios) {
@@ -41,4 +40,16 @@ public class AppService {
         }
     }
 
+    public void handlePostRequest(Integer id_pedido, Integer id_donacion, String comentario, String nombre, String email) {
+        // Print all parameters
+        System.out.println("id_pedido: " + id_pedido);
+        System.out.println("id_donacion: " + id_donacion);
+        System.out.println("comentario: " + comentario);
+        System.out.println("nombre: " + nombre);
+        System.out.println("email: " + email);
+        // Save comentario
+        LocalDateTime comentarioTimestamp = LocalDateTime.now();
+        Comentario comentario_object = new Comentario(nombre, email, comentarioTimestamp, comentario, id_donacion, id_pedido);
+        comentarioRepository.save(comentario_object);
+    }
 }

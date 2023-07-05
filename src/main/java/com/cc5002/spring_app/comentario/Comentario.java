@@ -31,9 +31,9 @@ public class Comentario {
     @NotNull
     private String comentario;
 
-    private int id_donacion;
+    private Integer id_donacion;
 
-    private int id_pedido;
+    private Integer id_pedido;
 
     public Comentario() {
     }
@@ -43,8 +43,8 @@ public class Comentario {
         String email,
         LocalDateTime fecha,
         String comentario,
-        int id_donacion,
-        int id_pedido
+        Integer id_donacion,
+        Integer id_pedido
     ) {
         this.nombre = nombre;
         this.email = email;
@@ -76,11 +76,11 @@ public class Comentario {
         return comentario;
     }
 
-    public int getId_donacion() {
+    public Integer getId_donacion() {
         return id_donacion;
     }
 
-    public int getId_pedido() {
+    public Integer getId_pedido() {
         return id_pedido;
     }
 }

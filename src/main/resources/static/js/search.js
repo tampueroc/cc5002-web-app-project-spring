@@ -23,10 +23,10 @@ let updateSearchResults = (results) => {
     resultElement.appendChild(resultElementTotalComentarios);
     resultElement.addEventListener("click", () => {
       if (searchType.value == 'donacion'){
-        window.location.href = `/api/comentarios?id_donacion=${donacion.id}&id_pedido=0`;
+        window.location.href = `/comentarios?id_donacion=${donacion.id}`;
       }
       else if (searchType.value == 'pedido') {
-        window.location.href = `/api/comentarios?id_donacion=0&id_pedido=${donacion.id}`;
+        window.location.href = `/comentarios?id_pedido=${donacion.id}`;
       }
     });
     tableResults.appendChild(resultElement);
