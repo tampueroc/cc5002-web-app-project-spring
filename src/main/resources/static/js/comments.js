@@ -23,9 +23,13 @@ function populateComments(){
                     let resultElementEmail = document.createElement("td");
 
                     resultElementNombre.innerHTML = comentario.nombre;
+                    resultElementNombre.style = "width: 10%";
                     resultElementComentario.innerHTML = comentario.comentario;
+                    resultElementComentario.style = "width: 60%";
                     resultElementFecha.innerHTML = comentario.fecha;
+                    resultElementFecha.style = "width: 20%";
                     resultElementEmail.innerHTML = comentario.email;
+                    resultElementEmail.style = "width: 10%";
 
                     resultElement.append(resultElementNombre);
                     resultElement.append(resultElementEmail);

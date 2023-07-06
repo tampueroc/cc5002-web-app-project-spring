@@ -22,10 +22,15 @@ let updateSearchResults = (results) => {
       let resultElementTotalComentarios = document.createElement("td");
       let donacion_raw = JSON.stringify(result.donacion);
       let donacion = JSON.parse(donacion_raw);
+
       resultElementNombre.textContent = donacion.nombre;
+      resultElementNombre.style = "text-align: left;"
       resultElementTipo.textContent = parseTipo(donacion.tipo);
+      resultElementTipo.style = "text-align: left;"
       resultElementCantidad.textContent = donacion.cantidad;
+      resultElementCantidad.style = "text-align: left;"
       resultElementTotalComentarios.textContent = result.total_comentarios;
+      resultElementTotalComentarios.style = "text-align: center;"
 
       resultElement.appendChild(resultElementNombre);
       resultElement.appendChild(resultElementTipo);
@@ -44,10 +49,15 @@ let updateSearchResults = (results) => {
       let resultElementTotalComentarios = document.createElement("td");
       let pedido_raw = JSON.stringify(result.pedido);
       let pedido = JSON.parse(pedido_raw);
+
       resultElementNombreSolicitante.textContent = pedido.nombre_solicitante;
+      resultElementNombreSolicitante.style = "text-align: left;"
       resultElementTipo.textContent = parseTipo(pedido.tipo);
+      resultElementTipo.style = "text-align: left;"
       resultElementCantidad.textContent = pedido.cantidad;
+      resultElementCantidad.style = "text-align: left;"
       resultElementTotalComentarios.textContent = result.total_comentarios;
+      resultElementTotalComentarios.style = "text-align: center;"
 
       resultElement.appendChild(resultElementNombreSolicitante);
       resultElement.appendChild(resultElementTipo);
